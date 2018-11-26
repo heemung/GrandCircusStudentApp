@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "StudentList";
+}
+
+<h2>StudentList</h2>
+
+@*CRUD this is R*@
+@*1.page for list of students
+    2. First Name
+    3.Last Name
+    4. Phone
+    5.Address*@
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Id</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (dynamic s in ViewBag.AllStudents)
+    {
+    <tr>
+        <td>@s.fName</td>
+        <td>@s.lName</td>
+        <td>@s.phoneNumber</td>
+        <td>@s.address</td>
+        <td>@s.ID</td>
+        <td><a href="/Home/DeleteStud?ID=@s.ID" onclick="return confirm('Are you sure you want to delete this student?')" class="btn-danger btn-sm" name="delete">Delete</a>
+        <a href="/Home/EditStudent?ID=@s.ID" class="btn-default btn-sm" name="edit">Edit</a></td>
+    </tr>
+    }
+</table>
+<br />
+<a href="/Home/AddStudent">Add A Student</a>
+
+@*CRUD this is for C*@
+@*1.Make new user
+    2. make a row for add , edit , delete*@
